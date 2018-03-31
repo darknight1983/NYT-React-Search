@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const apiRoutes = require('./routes/apiRoutes');
+
+
 
 
 
@@ -17,6 +20,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Here is where we need to define the routes for the api.
+app.use("/api", apiRoutes);
+
+
 
 // This route will send every request the React app. (Client directory)
 app.get('*', (req, res) => {
