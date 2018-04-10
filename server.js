@@ -5,6 +5,8 @@ const apiRoutes = require('./routes/apiRoutes');
 
 
 
+// Require the dot-env package in order to store API-Key.
+require('dotenv').config();
 
 
 const app = express();

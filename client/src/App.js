@@ -7,14 +7,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="mdl-layout mdl-js-layout">
-            <header className="mdl-layout__header mdl-layout__header--scroll">
+        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header className="mdl-layout__header">
               <div className="mdl-layout__header-row">
                 {/* Title */}
                 <span className="mdl-layout-title">New York Times Scraper</span>
                 <div className="mdl-layout-spacer"></div>
                 {/* Navigation */}
-                <nav className="mdl-navigation">
+                <nav className="mdl-navigation mdl-layout--large-screen-only">
                   <Link to="/search"><a className="mdl-navigation__link" href="">Search</a></Link>
                   <a className="mdl-navigation__link" href="">Saved Articles</a>
                 </nav>
