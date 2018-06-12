@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import nytSearch from './utils/helpers.js';
 import SearchComponent from './search.js';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      articles: []
+    }
+    this.getArticles = this.getArticles.bind(this)
+  }
+  getArticles(author) {
+    nytSearch(author).then((articles) => {
+      this.setState({ articles: articles.data.response.docs })
+      console.log(this.state)
+    }).catch((error) => {
+       console.log(error)
+    })
+
+  }
   render() {
     return (
       <Router>
@@ -30,7 +48,9 @@ class App extends Component {
             <main className="mdl-layout__content">
               <div className="page-content">
                 {/* Your application content goes here */}
-                <Route path="/search" component={SearchComponent} />
+                <Route path="/search" render={(props) => {
+                    return <SearchComponent {...props} grabArticles={this.getArticles}/>
+                  }} />
               </div>
             </main>
         </div>

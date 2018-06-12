@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import nytSearch from './utils/helpers.js';
+// import nytSearch from './utils/helpers.js';
 import './css/search.css';
 
 
@@ -37,8 +37,10 @@ class SearchComponent extends React.Component {
     {/* Use axios in this function to make a get request to NYT API */}
     e.preventDefault()
     const { topic } = this.state;
+    //
+    // nytSearch(topic)
 
-    nytSearch(topic)
+    this.props.grabArticles(topic)
   }
 
   render() {
